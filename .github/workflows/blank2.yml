@@ -50,15 +50,3 @@ jobs:
         
       - name: Find directories in this file
         run: ls
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
