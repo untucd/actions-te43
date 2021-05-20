@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: testing what's installed
+name: testing_what's_installed
 
 # Controls when the action will run. 
 on:
