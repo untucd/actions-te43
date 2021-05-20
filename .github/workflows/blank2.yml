@@ -59,7 +59,7 @@ jobs:
         
       - name: Remove Nodejs
         run: |
-          sudo apt-get remove nodejs npm node
+          sudo apt-get remove nodejs npm
           sudo apt-get purge nodejs
           sudo rm -rf /usr/local/bin/npm 
           sudo rm -rf /usr/local/share/man/man1/node* 
@@ -75,6 +75,18 @@ jobs:
           
       - name: DF after
         run: df -h
+        
+      - name: Trying rm no file
+        run: rm /anyfile/anyfile
+        
+      - name: will this run
+        run: echo yes this is running | tee file is created
+        
+      - name: ls
+        run: ls
+      
+      - name: uname
+        run: uname -a
           
         
         
