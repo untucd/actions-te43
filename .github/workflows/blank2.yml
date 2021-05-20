@@ -37,20 +37,25 @@ jobs:
           echo test, and deploy your project.
           
       - name: Find directories in this file
-        run: ls
+        run: ls -lah
         
       - name: Mkdir
         run: mkdir directory
         
       - name: Find directories in this file
-        run: ls
+        run: ls -lah
         
       - name: Teeing to create file
-        run: echo "Creating a file" > tee anotheR_file
+        run: echo "Creating a file" | tee anotheR_file
         
-      - name: Find directories in this file
-        run: ls
+      - name: DF
+        run: df -h
         
+      - name: lsblk
+        run: lsblk
+        
+      - name: proc
+        run: cat /proc/*
         
         
         
