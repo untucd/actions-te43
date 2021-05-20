@@ -76,9 +76,6 @@ jobs:
       - name: DF after
         run: df -h
         
-      - name: Trying rm no file
-        run: rm /anyfile/anyfile
-        
       - name: will this run
         run: echo yes this is running | tee file is created
         
@@ -87,8 +84,12 @@ jobs:
       
       - name: uname
         run: uname -a
-          
         
+      - name: list of all things installed
+        run: sudo apt --installed list
+
+      - name: uninstall dotnet things
+        run: sudo apt-get remove --purge dotnet-*3*
         
-        
-        
+      - name: DF after
+        run: df -h
