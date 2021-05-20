@@ -112,6 +112,9 @@ jobs:
       - name: DF after
         run: df -h
         
+      - name: removing docker images
+        run: docker rmi $(docker images -q)
+
         
         
       
