@@ -89,7 +89,27 @@ jobs:
         run: sudo apt --installed list
 
       - name: uninstall dotnet things
-        run: sudo apt-get remove --purge dotnet-*3*
+        run: sudo apt-get remove --purge dotnet*
         
       - name: DF after
         run: df -h
+        
+      - name: uninstall php
+        run: sudo apt-get remove --purge php*
+        
+      - name: DF after
+        run: df -h
+        
+      - name: uninstall python things
+        run: sudo apt-get remove --purge python*
+        
+      - name: DF after
+        run: df -h
+        
+      - name: uninstall mongodb
+        run: sudo apt-get remove --purge mongodb*
+        
+      - name: DF after
+        run: df -h
+        
+      
