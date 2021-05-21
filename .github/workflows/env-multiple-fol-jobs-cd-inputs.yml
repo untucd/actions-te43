@@ -25,7 +25,10 @@ jobs:
         
       - name: cd, env, pwd
         run: |
+          whoami
           sudo su
+          whoami
+          cd /root/
           pwd
           mkdir ${{ env.folder }}
           cd ${{ env.folder }}
