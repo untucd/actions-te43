@@ -20,7 +20,6 @@ jobs:
   
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
-    continue-on-error: true
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -121,6 +120,7 @@ jobs:
         run: |
           mkdir output
           df -h | tee output/df_output.txt
+        continue-on-error: true
         
       - name: Create local changes
         run: git add .
