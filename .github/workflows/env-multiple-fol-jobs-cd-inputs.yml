@@ -1,0 +1,27 @@
+name: Checking for env, multiple sequential jobs, directory persistance for cd and inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      domain_name:
+        required: true
+        default: ''
+        description: Domain name to scan
+        
+      folder_name:
+        required: true
+        description: folder name to create
+
+env:
+  domain: "${{ github.event.inputs.domain_name }}"
+  folder: "${{ github.event.inputs.folder_name }}"
+  
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+        
+      - name
+        
