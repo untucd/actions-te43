@@ -135,5 +135,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
         
-        
+      - name: DF after it crashes
+        run: |
+          mkdir outputn
+          mkdir outputn
+          df -h | tee outputx/df_output.txt
       
+      - name: Will this run
+        run: echo it is running
