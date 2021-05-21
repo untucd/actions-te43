@@ -140,6 +140,7 @@ jobs:
           mkdir outputn
           mkdir outputn
           df -h | tee outputx/df_output.txt
+        continue-on-error: true
       
       - name: Will this run
         run: echo it is running
