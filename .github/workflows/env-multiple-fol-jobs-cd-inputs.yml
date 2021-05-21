@@ -25,6 +25,7 @@ jobs:
         
       - name: cd, env, pwd
         run: |
+          sudo su
           pwd
           mkdir ${{ env.folder }}
           cd ${{ env.folder }}
