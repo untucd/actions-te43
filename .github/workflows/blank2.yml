@@ -116,7 +116,9 @@ jobs:
 #         run: docker rmi $(docker images -q)
 
       - name: DF after
-        run: df -h | tee output/df_output.txt
+        run: |
+          mkdir output
+          df -h | tee output/df_output.txt
         
       - name: Create local changes
         run: git add .
