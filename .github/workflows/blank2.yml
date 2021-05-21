@@ -54,69 +54,84 @@ jobs:
       - name: remove android
         run: sudo rm /usr/local/lib/android/sdk -rf
         
-      - name: DF
-        run: df -h
+#       - name: DF
+#         run: df -h
         
-      - name: Remove Nodejs
-        run: |
-          sudo apt-get remove nodejs npm
-          sudo apt-get purge nodejs
-          sudo rm -rf /usr/local/bin/npm 
-          sudo rm -rf /usr/local/share/man/man1/node* 
-          sudo rm -rf /usr/local/lib/dtrace/node.d
-          rm -rf ~/.npm
-          rm -rf ~/.node-gyp
-          sudo rm -rf /opt/local/bin/node
-          sudo rm -rf /opt/local/include/node
-          sudo rm -rf /opt/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/node*
-          sudo rm -rf /usr/local/include/node*
-          sudo rm -rf /usr/local/bin/node*
+#       - name: Remove Nodejs
+#         run: |
+#           sudo apt-get remove nodejs npm
+#           sudo apt-get purge nodejs
+#           sudo rm -rf /usr/local/bin/npm 
+#           sudo rm -rf /usr/local/share/man/man1/node* 
+#           sudo rm -rf /usr/local/lib/dtrace/node.d
+#           rm -rf ~/.npm
+#           rm -rf ~/.node-gyp
+#           sudo rm -rf /opt/local/bin/node
+#           sudo rm -rf /opt/local/include/node
+#           sudo rm -rf /opt/local/lib/node_modules
+#           sudo rm -rf /usr/local/lib/node*
+#           sudo rm -rf /usr/local/include/node*
+#           sudo rm -rf /usr/local/bin/node*
           
-      - name: DF after
-        run: df -h
+#       - name: DF after
+#         run: df -h
         
-      - name: will this run
-        run: echo yes this is running | tee file is created
+#       - name: will this run
+#         run: echo yes this is running | tee file is created
         
-      - name: ls
-        run: ls
+#       - name: ls
+#         run: ls
       
-      - name: uname
-        run: uname -a
+#       - name: uname
+#         run: uname -a
         
-      - name: list of all things installed
-        run: sudo apt --installed list
+#       - name: list of all things installed
+#         run: sudo apt --installed list
 
-      - name: uninstall dotnet things
-        run: sudo apt-get remove --purge dotnet*
+#       - name: uninstall dotnet things
+#         run: sudo apt-get remove --purge dotnet*
         
-      - name: DF after
-        run: df -h
+#       - name: DF after
+#         run: df -h
         
-      - name: uninstall php
-        run: sudo apt-get remove --purge php*
+#       - name: uninstall php
+#         run: sudo apt-get remove --purge php*
         
-      - name: DF after
-        run: df -h
+#       - name: DF after
+#         run: df -h
         
-      - name: uninstall python things
-        run: sudo apt-get remove --purge python*
+#       - name: uninstall python things
+#         run: sudo apt-get remove --purge python*
         
-      - name: DF after
-        run: df -h
+#       - name: DF after
+#         run: df -h
         
-      - name: uninstall mongodb
-        run: sudo apt-get remove --purge mongodb*
+#       - name: uninstall mongodb
+#         run: sudo apt-get remove --purge mongodb*
         
-      - name: DF after
-        run: df -h
+#       - name: DF after
+#         run: df -h
         
-      - name: removing docker images
-        run: docker rmi $(docker images -q)
+#       - name: removing docker images
+#         run: docker rmi $(docker images -q)
 
       - name: DF after
-        run: df -h
+        run: df -h | tee output/df_output.txt
+        
+      - name: Create local changes
+        run: git add .
+        
+      - name: Commit changes
+        run: |
+          git config --local user.email "ubuntu@bugs.tools"
+          git config --global user.name "untucd"
+          git commit -m "test reporting" -a --allow-empty
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
         
         
       
