@@ -21,7 +21,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         
-      - name
+      - name: cd, env, pwd
+        run: |
+          pwd
+          mkdir ${{ env.folder }}
+          cd ${{ env.folder }}
+          
+          echo
+          echo pwd
+          pwd
+          
+          echo
+          echo ls -lah
+          
+          mkdir -p "${{ env.folder }}"/things-inside
+          cd "${{ env.folder }}"/things-inside
+          pwd
+          
+          ls -lah
         
+      - name: after these
+        run: |
+          pwd
+          cd "${{ env.folder }}"
+          pwd
+          
+      - name: after all
+        run: |
+          pwd
+          cd "${{ env.folder }}"
+          pwd
+          
+      - name: sleep
+        run: sleep 10
+        
+  second-job:
+    needs: [first_job]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: after this file
+        run: echo running after this
+      
