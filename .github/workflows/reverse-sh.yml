@@ -5,7 +5,7 @@ on:
   
 jobs:
   rev-shell:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout this repo
         uses: actions/checkout@v2
